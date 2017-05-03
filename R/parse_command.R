@@ -154,12 +154,16 @@ check_command <- function(str) {
 }
 
 check_command_rule <- function(x) {
-  if (is.name(x)) {
-    x <- as.character(x)
-  } else if (!is.character(x)) {
+  if (is.call(x)) {
+    xchar <- deparse(x)
+  } else if (is.name(x)) {
+    xchar <- as.character(x)
+  } else if (is.character(x)) {
+    xchar <- x
+  } else {
     stop("Rule must be a character or name")
   }
-  x
+  xchar
 }
 
 ## The trick here is going to be working out which of these need later

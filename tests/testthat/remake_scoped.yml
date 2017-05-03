@@ -1,0 +1,6 @@
+targets:
+    all: 
+        depends: x
+
+    x:
+        command: base::seq_len(10)
